@@ -1,0 +1,16 @@
+CREATE TABLE [dbo].[user](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[username] [varchar](20) NOT NULL,
+	[password] [varchar](32) NOT NULL,
+	[userAvatar] [varchar](50) NOT NULL,
+	[nickName] [varchar](20) NOT NULL,
+	[introduce] [varchar](100) NULL,
+	[state] [smallint] NOT NULL,
+	[createtime] [datetime] NOT NULL,
+ CONSTRAINT [PK_user] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+USE [master]

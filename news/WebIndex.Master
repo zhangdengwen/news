@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WebIndex.master.cs" Inherits="news.WebIndex" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+        <!-- 引入公共样式 -->
+    <link rel="stylesheet" href="./css/reset.css">
+</head>
+<body>
+    <%-- 页头 --%>
+    <header id="header-top">
+        <!-- 页眉区域 -->
+        <div id="top-box">
+            <div class="top-left">
+                <ul>
+                    <li><a href="/index.aspx">首页</a></li>
+                    <asp:Repeater ID="cateList" runat="server">
+                        <ItemTemplate>
+                            <li><a href="/index.aspx?id=<%# Eval("id") %>"><%# Eval("catename") %></a></li>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </ul>
+            </div>
+            <div class="top-right">
+                <ul>
+                    <li><a href="SendArticle.aspx">发文</a></li>
+                    <%
+                        if (Session["userInfo"] != null)
+                        {
+                    %>
+                    <li><a href="userInfo.aspx"><asp:Label ID="nick" runat="server" Text=""></asp:Label></a></li>
+                    <%
+                        }
+                        else
+                        {
+                    %>
+                    <li><a href="login.aspx">登陆</a></li>
+                    <li><a href="login.aspx">注册</a></li>
+                    <%} %>
+                    <li><a href="">反馈</a></li>
+                    <li><a href="">侵权投诉</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <%-- 子模板区域内容 --%>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+</body>
+</html>
